@@ -9,3 +9,6 @@ Oauth
 Pip
 chart.js
 pypyodbc
+sql alchemy 
+flask
+flask_oauthlib
