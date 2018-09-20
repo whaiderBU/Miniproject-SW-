@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, url_for  ,session, g, flash, render_template
+from flask import Flask, request, redirect, url_for  ,session, g, flash, render_template, Markup
 # from flask_oauth import OAuth2
 from flask_oauthlib.client import OAuth
 from sqlalchemy import create_engine, Column, Integer, String
@@ -47,8 +47,10 @@ def index():
         return redirect(url_for('login'))
  
     access_token = access_token[0]
- 
     return render_template('index.html')
+    labels = ["January","February","March","April","May","June","July","August"]
+    values = [10,9,8,7,6,4,7,8]
+    return render_template('index.html', values=values, labels=labels)
  
 @app.route('/login')
 def login():
