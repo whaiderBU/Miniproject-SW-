@@ -1,5 +1,6 @@
-from flask import Flask, request, redirect, url_for  ,session, g, flash, render_template
-# from flask_oauth import OAuth2
+from flask import Flask, request, redirect, url_for, session, g, flash, \
+     render_template
+# from flask_oauth import OAuth
 from flask_oauthlib.client import OAuth
 from sqlalchemy import create_engine, Column, Integer, String
 from sqlalchemy.orm import scoped_session, sessionmaker
@@ -8,15 +9,14 @@ from sqlalchemy.ext.declarative import declarative_base
 # configuration
 SECRET_KEY = 'development key'
 DEBUG = True
-
-
+ 
 # setup flask
 app = Flask(__name__)
 app.debug = DEBUG
 app.secret_key = SECRET_KEY
 oauth = OAuth()
-
-#Use Twitter as example remote application
+ 
+# Use Twitter as example remote application
 twitter = oauth.remote_app('twitter',
     # unless absolute urls are used to make requests, this will be added
     # before all URLs.  This is also true for request_token_url and others.
@@ -35,10 +35,10 @@ twitter = oauth.remote_app('twitter',
     consumer_secret='KfbKskgTbm1Ahk37zCjScfHQKHHzZPJI7oPaU1AQzmut3jsUvN'
 )
  
+ 
 @twitter.tokengetter
 def get_twitter_token(token=None):
     return session.get('twitter_token')
-
  
 @app.route('/')
 def index():
@@ -62,6 +62,7 @@ def logout():
     flash('You were signed out')
     return redirect(request.referrer or url_for('index'))
  
+ 
 @app.route('/oauth-authorized')
 @twitter.authorized_handler
 def oauth_authorized(resp):
@@ -78,12 +79,10 @@ def oauth_authorized(resp):
         resp['oauth_token'],
         resp['oauth_token_secret']
     )
+ 
+ 
     return redirect(url_for('index'))
-
-@app.route("/")
-@app.route("/home")
-def home():
-    return render_template('home.html')
-
+ 
+ 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
