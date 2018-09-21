@@ -18,3 +18,7 @@ sql alchemy
 mysql 
 flask
 flask_oauthlib
+
+
+******Documentation*******
+https://docs.google.com/document/d/1xzyH-duKh3ySXJuyPbNZtPf9gxn7dKNY0b0gYfLx4Ss/edit?usp=sharing
