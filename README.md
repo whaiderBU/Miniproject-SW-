@@ -22,3 +22,14 @@ flask_oauthlib
 
 ******Documentation*******
 https://docs.google.com/document/d/1xzyH-duKh3ySXJuyPbNZtPf9gxn7dKNY0b0gYfLx4Ss/edit?usp=sharing
+
+Sprint 1 
+Meet
+Plan
+Design 
+Develop front end (Test)
+
+Sprint 2 
+Develop login (Test)
+Develop database (Test)
+Integrate database and cloud with front end (Test)
